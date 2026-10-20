@@ -1,0 +1,94 @@
+/* 《画外》 —— 手绘简笔风 / 蓝灰基调 */
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#1c2230;font-family:"Kaiti SC","KaiTi","STKaiti","楷体",serif;color:#2b3242;overflow:hidden}
+#app{position:relative;width:100vw;height:100vh;display:flex;align-items:center;justify-content:center}
+.screen{position:absolute;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column}
+.screen.active{display:flex}
+button{font-family:inherit;cursor:pointer;border:2px solid #2b3242;background:#fdfbf5;border-radius:10px;padding:10px 26px;font-size:17px;box-shadow:3px 3px 0 #2b3242;transition:transform .1s}
+button:hover{transform:translate(-1px,-1px)}
+button:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #2b3242}
+.hidden{display:none!important}
+.dim{opacity:.65;font-size:14px}
+
+/* 标题 */
+#scr-title{background:radial-gradient(ellipse at 50% 30%,#3a4560 0,#1c2230 70%)}
+.title-wrap{text-align:center}
+.title-art{width:340px;height:210px;margin:0 auto 8px;background:#fdfbf5;border:3px solid #2b3242;border-radius:8px;box-shadow:6px 6px 0 rgba(0,0,0,.4);overflow:hidden}
+.title-art img{width:100%;height:100%;object-fit:cover}
+.game-title{font-size:72px;letter-spacing:28px;color:#f2e9d8;text-indent:28px;text-shadow:4px 4px 0 #000}
+.game-sub{color:#9aa7c0;margin:10px 0 26px;font-size:15px;letter-spacing:2px}
+.title-btns{display:flex;gap:18px;justify-content:center}
+.title-foot{margin-top:34px;color:#5d6a86;font-size:12px;letter-spacing:3px}
+
+/* 内容提示 */
+#scr-note{background:#0c0e14}
+.note-card{max-width:520px;text-align:center;color:#cfd6e4;line-height:2.2;font-size:17px}
+.note-card button{margin-top:30px}
+
+/* 画室 */
+#scr-hub{background:#2a2430 url("") ;background-image:repeating-linear-gradient(0deg,transparent 0 38px,rgba(255,255,255,.02) 38px 39px)}
+.hub-wall{text-align:center;padding:20px}
+.hub-title{color:#e8ddc8;letter-spacing:10px;font-size:26px;margin-bottom:24px}
+.frames{display:flex;gap:34px;justify-content:center;flex-wrap:wrap}
+.frame{width:190px;cursor:pointer;transition:transform .15s}
+.frame:hover{transform:translateY(-6px)}
+.frame-art{height:250px;background:#fdfbf5;border:10px solid #6b5636;outline:2px solid #2b3242;box-shadow:6px 8px 12px rgba(0,0,0,.5);overflow:hidden}
+.frame.locked .frame-art{filter:grayscale(1) brightness(.55)}
+.frame.locked{cursor:not-allowed}
+.frame span{display:block;color:#cbbf9f;margin-top:10px;font-size:14px;letter-spacing:2px;line-height:1.6}
+.hub-quote{color:#8d96ad;margin-top:22px;font-size:14px;font-style:italic}
+.hub-bar{margin-top:18px;display:flex;gap:16px;justify-content:center;align-items:center;color:#cbbf9f}
+
+/* 舞台 */
+#scr-stage{background:#11141d;flex-direction:column;justify-content:flex-start}
+#hud{width:min(96vw,960px);display:flex;justify-content:space-between;color:#8d96ad;font-size:13px;padding:8px 4px;letter-spacing:2px}
+#stage{position:relative;width:min(96vw,960px);aspect-ratio:16/9;background:#e9e4d8;border:3px solid #2b3242;border-radius:6px;box-shadow:0 10px 40px rgba(0,0,0,.6);overflow:hidden}
+#bg,#bg svg{position:absolute;inset:0;width:100%;height:100%}
+.frame-art svg,#settle-art svg,.title-art svg{width:100%;height:100%;display:block}
+#stage.gray #bg svg{filter:grayscale(.92) brightness(.9)}
+#stage.warmflash #bg svg{animation:warmflash 2.2s ease forwards}
+@keyframes warmflash{from{filter:grayscale(.92) brightness(.9)}to{filter:none}}
+#hots{position:absolute;inset:0}
+.hot{position:absolute;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.hot::after{content:"";width:12px;height:12px;border-radius:50%;background:rgba(255,244,200,.9);box-shadow:0 0 10px 4px rgba(255,238,170,.55);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:.45;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
+
+/* 对话 */
+#dlg{position:relative;width:min(96vw,960px);margin-top:10px;background:rgba(253,251,245,.96);border:3px solid #2b3242;border-radius:12px;padding:16px 22px 22px;min-height:110px;cursor:pointer;box-shadow:4px 4px 0 rgba(0,0,0,.45)}
+#dlg-who{position:absolute;top:-16px;left:18px;background:#2b3242;color:#fdfbf5;padding:3px 16px;border-radius:8px;font-size:15px;letter-spacing:3px}
+#dlg-who:empty{display:none}
+#dlg-text{font-size:18px;line-height:1.9;white-space:pre-wrap}
+#dlg-next{position:absolute;right:16px;bottom:6px;color:#8d96ad;animation:pulse 1.4s infinite}
+
+/* 选项 */
+#choices{position:absolute;left:50%;bottom:26%;transform:translateX(-50%);display:flex;flex-direction:column;gap:12px;z-index:5;align-items:center}
+#choices button{min-width:320px;font-size:16px;background:rgba(253,251,245,.97)}
+
+/* 黑屏字幕 */
+#note-overlay{position:fixed;inset:0;background:#000;z-index:8;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer}
+#note-overlay p{white-space:pre-wrap;color:#d8d2c2;font-size:20px;letter-spacing:4px;line-height:2.4;text-align:center;padding:0 40px}
+.note-hint{position:absolute;bottom:30px;color:#555;font-size:12px;letter-spacing:3px}
+
+/* 结算 */
+#scr-settle{background:rgba(12,14,20,.96)}
+.settle-card{text-align:center;max-width:460px}
+#settle-art{width:400px;height:250px;margin:0 auto;border:3px solid #2b3242;border-radius:6px;overflow:hidden;background:#fdfbf5;box-shadow:0 10px 40px rgba(0,0,0,.6)}
+#settle-title{color:#f2e9d8;letter-spacing:6px;margin:18px 0 6px}
+#settle-desc{color:#9aa7c0;font-size:14px;line-height:1.9;margin-bottom:8px}
+#settle-letters{color:#cbbf9f;font-size:14px;margin-bottom:18px}
+
+/* 画廊 */
+#scr-gallery{background:#141821}
+.gallery-wrap{text-align:center;max-width:760px;width:92%}
+.gallery-wrap h2{color:#e8ddc8;letter-spacing:8px;margin-bottom:18px}
+#gallery-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;margin-bottom:20px}
+.gcell{aspect-ratio:3/4;border:2px solid #3a4560;border-radius:4px;background:#1e2433;display:flex;align-items:center;justify-content:center;color:#4a5670;font-size:16px}
+.gcell.got{background:#fdfbf5;color:#2b3242;border-color:#cbbf9f}
+.gallery-special{margin:6px auto 18px;width:300px;height:110px;border:2px dashed #4a5670;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#5d6a86;font-size:14px;letter-spacing:3px}
+.gallery-special.unlocked{border-style:solid;border-color:#cbbf9f;color:#e8ddc8;background:#241f2e}
+
+/* toast */
+#toast{position:fixed;top:26px;left:50%;transform:translateX(-50%);background:#2b3242;color:#fdfbf5;border:2px solid #cbbf9f;padding:10px 26px;border-radius:10px;font-size:15px;letter-spacing:2px;z-index:99;box-shadow:0 6px 20px rgba(0,0,0,.5)}
+
+
+

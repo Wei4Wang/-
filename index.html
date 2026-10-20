@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>画外 · Out of Frame</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- 标题 -->
+  <div class="screen active" id="scr-title">
+    <div class="title-wrap">
+      <div class="title-art" id="title-art"></div>
+      <h1 class="game-title">画&nbsp;外</h1>
+      <p class="game-sub">Out of Frame —— 爱不在选项里，在开口的那一秒</p>
+      <div class="title-btns">
+        <button id="btn-start">开始</button>
+        <button id="btn-continue">继续</button>
+        <button id="btn-gallery">画廊</button>
+      </div>
+      <p class="title-foot">灵感致敬《拣爱》 · 手绘简笔风互动叙事</p>
+    </div>
+  </div>
+
+  <!-- 内容提示 -->
+  <div class="screen" id="scr-note">
+    <div class="note-card">
+      <p>本作涉及抑郁与死亡议题，请酌情游玩。</p>
+      <p class="dim">所有"离开"都不会被直接呈现。<br>如果你或你身边的人正在经历困难，请记得：开口的那一秒，永远不迟。</p>
+      <button id="btn-note-ok">我准备好了</button>
+    </div>
+  </div>
+
+  <!-- 画室枢纽 -->
+  <div class="screen" id="scr-hub">
+    <div class="hub-wall">
+      <h2 class="hub-title">画室 · 《四个人》</h2>
+      <div class="frames">
+        <div class="frame" id="fr-1"><div class="frame-art" id="fa-1"></div><span>第一章<br>雨停之前</span></div>
+        <div class="frame" id="fr-2"><div class="frame-art" id="fa-2"></div><span>第二章<br>书脊里的春天</span></div>
+        <div class="frame" id="fr-3"><div class="frame-art" id="fa-3"></div><span>第三章<br>错位 · 坠落</span></div>
+        <div class="frame locked" id="fr-4"><div class="frame-art" id="fa-4"></div><span>？？？<br>（还没画完）</span></div>
+      </div>
+      <p class="hub-quote">"我画了半辈子别人。最熟的这四个人，我一张都画不像。"</p>
+      <div class="hub-bar">
+        <span id="hub-letters">信：0 / 46</span>
+        <button id="btn-hub-gallery">画廊</button>
+        <button id="btn-hub-title">回标题</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 演出舞台 -->
+  <div class="screen" id="scr-stage">
+    <div id="hud"><span id="hud-chapter"></span><span id="hud-letters">✉ 0/46</span></div>
+    <div id="stage">
+      <div id="bg"></div>
+      <div id="hots"></div>
+    </div>
+
+    <div id="dlg" class="hidden">
+      <div id="dlg-who"></div>
+      <div id="dlg-text"></div>
+      <div id="dlg-next">▼</div>
+    </div>
+    <div id="choices" class="hidden"></div>
+  </div>
+
+  <!-- 章节结算 -->
+  <div class="screen" id="scr-settle">
+    <div class="settle-card">
+      <div id="settle-art"></div>
+      <h2 id="settle-title"></h2>
+      <p id="settle-desc"></p>
+      <p id="settle-letters"></p>
+      <button id="btn-settle-ok">继续</button>
+    </div>
+  </div>
+
+  <!-- 画廊 -->
+  <div class="screen" id="scr-gallery">
+    <div class="gallery-wrap">
+      <h2>画廊 · 四十六封信</h2>
+      <div id="gallery-grid"></div>
+      <div class="gallery-special" id="gallery-ruyi"></div>
+      <button id="btn-gallery-back">返回</button>
+    </div>
+  </div>
+
+  <div id="note-overlay" class="hidden"><p id="note-text"></p><span class="note-hint">点击继续</span></div>
+  <div id="toast" class="hidden"></div>
+</div>
+<script src="js/art.js"></script>
+<script src="js/story.js"></script>
+<script src="js/engine.js"></script>
+</body>
+</html>
+
